@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <Style>
+                    body{
+                        font-family: serif;
+                        color: darkgoldenrod;
+
+                    }
+     </Style>
+
+</head>
+<body>
+
+    
+    <script>
+      var inputItem = [
+           {
+               id : 1,
+               title : "Title 1",
+               childrens : [
+                   {id: 2,
+                   title : "Title 2",
+                  childrens : []
+                   }
+                             ]
+           },
+               
+           {    id : 3,
+                title : "Title 3",
+                childrens : [
+                    {id : 4,
+                    title: "Title 4",
+                    childrens : [
+                        { id : 5,
+                        title : "Title 5",
+                         children : []
+                        }
+                                  ]
+                    }
+                               ]
+           }
+                 ];
+
+                 function inputItem(array, id) {
+  for (let index = 0; index < array.length; index++) {
+    var element = array[index];
+    if (element.id === id) {
+      return element;
+    } else {
+      if (element.children) {
+        var found = inputItem(element.children, id);
+
+        if (found) {
+          return found;
+          console.log(inputItem(array,1,title));
+        }
+      }
+    }
+  }
+}              
+
+
+// var inputItem = (arr, itemId, nestingKey) => (
+//   arr.reduce((a, item) => {
+//     if (a) return a;
+//     if (item.id === itemId) return item;
+//     if (item[nestingKey]) return inputItem(item[nestingKey], itemId, nestingKey)
+//   }, null)
+// );
+// var res = inputItem(array, 1,"children");
+// console.log(res);
+
+</script>
+
+
+
+</body>
+</html>
